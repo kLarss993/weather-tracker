@@ -13,7 +13,9 @@ params = {
 resp = requests.get(url, params=params)
 data = resp.json()
 
-print(data)
+temp = data['current_weather']['temperature']
+
+print(temp)
 
 
 @app.route('/')
