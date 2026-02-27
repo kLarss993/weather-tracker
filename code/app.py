@@ -18,6 +18,8 @@ def weather():
     temp = data['current_weather']['temperature']
     wndspd = data['current_weather']['windspeed']
 
+    return temp, wndspd
+
 @app.route('/')
 @app.route('/home')
 def home():
