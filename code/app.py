@@ -2,21 +2,21 @@ from flask import *
 import requests
 
 app = Flask(__name__)
-url = "https://api.open-meteo.com/v1/forecast"
 
-params = {
-    "latitude": 50.45,
-    "longitude": 30.52,
-    "current_weather": True
-}
+def weather():
+    url = "https://api.open-meteo.com/v1/forecast"
 
-resp = requests.get(url, params=params)
-data = resp.json()
+    params = {
+        "latitude": 50.45,
+        "longitude": 30.52,
+        "current_weather": True
+    }
 
-temp = data['current_weather']['temperature']
+    resp = requests.get(url, params=params)
+    data = resp.json()
 
-print(temp)
-
+    temp = data['current_weather']['temperature']
+    wndspd = data['current_weather']['windspeed']
 
 @app.route('/')
 @app.route('/home')
