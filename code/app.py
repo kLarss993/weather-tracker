@@ -86,7 +86,6 @@ def home():
 
     return render_template('home.html',
                            now=now,
-                           result=result,
                            temp=temp,
                            wndspd=wndspd,
                            error=error,
