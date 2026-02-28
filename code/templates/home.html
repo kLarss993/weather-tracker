@@ -3,26 +3,31 @@
     <head>
         <meta charset="UTF-8">
         <title>Hui</title>
+
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
     </head>
     <body>
-        <h1>Hi there!</h1>
+
+        <nav class="navbar bg-body-tertiary navbar-expand-lg>
+            <div class="container-fluid">
+                <a class="navbar-brand"><strong>Weather tracker</strong></a>
+                <form class="d-flex" role="search" method="POST">
+                    <input class="form-control me-2" type="search" placeholder="Search" name="city" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+
+        <br> <br>
+
 
         <br>
 
-        <h3>City: {{ city }}</h3>
-
-        <form method="post">
-            <input type="search" name="city" placeholder="Enter city name">
-            <button type="submit">Search</button>
-        </form>    
+        <h3>City: {{ city }}</h3> 
 
         <br>
-
-
-        
-
-
-
 
         <div class="container">
             <h3>Temperature & Wind</h3>
@@ -39,5 +44,6 @@
                 {% endfor %}
             </table>
         </div>
+
     </body>
 </html>

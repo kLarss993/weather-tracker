@@ -81,7 +81,7 @@ def home():
             if t.startswith(target_date):
                 result.append((t, temps[i], winds[i]))
 
-        print(result)
+        # print(result)
 
 
     return render_template('home.html',
