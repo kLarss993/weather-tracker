@@ -10,14 +10,23 @@
         <br>
 
         <h3>City: {{ city }}</h3>
-        <h3>Temperature: {{ temp }} °C (rn)</h3>
-        <h3>Wind speed: {{ wndspd }} mps (rn)</h3>
-
-        <br>
 
         <form method="post">
             <input type="search" name="city" placeholder="Enter city name">
             <button type="submit">Search</button>
         </form>    
+
+        <br>
+
+        <div class="container">
+            <table>
+                <h3>Temperature: 
+                    {% for i in range(10) %}
+                        <tr><td>{{ temp }} °C</td></tr>
+                        <tr><td>{{ wndspd }} mps</td></tr>
+                    {% endfor %}
+                </h3>
+            </table>
+        </div>
     </body>
 </html>

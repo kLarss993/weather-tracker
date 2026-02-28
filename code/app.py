@@ -11,6 +11,7 @@ def home():
     temp = None
     wndspd = None
     error = None
+    city = None
 
     if request.method == 'POST':
         city = request.form['city']
@@ -25,6 +26,8 @@ def home():
                 "language": "en,ua",
                 "format": "json"
             }
+
+        city=city.capitalize()
 
         geo_data = requests.get(geo_url, params=geo_params).json()
 
@@ -43,7 +46,7 @@ def home():
 
         temp = weath_data['current_weather']['temperature']
         wndspd = weath_data['current_weather']['windspeed']
-        city = geo_data['results']['name']
+        city = geo_data['results'][0]['name']
 
 
     return render_template('home.html',
