@@ -3,7 +3,11 @@ import requests
 
 app = Flask(__name__)
 
-def weather():
+
+
+@app.route('/')
+@app.route('/home')
+def home():
     url = "https://api.open-meteo.com/v1/forecast"
 
     params = {
@@ -18,12 +22,9 @@ def weather():
     temp = data['current_weather']['temperature']
     wndspd = data['current_weather']['windspeed']
 
-    return temp, wndspd
-
-@app.route('/')
-@app.route('/home')
-def home():
-    return render_template('home.html')
+    return render_template('home.html',
+                           temp=temp,
+                           wndspd=wndspd)
 
 
 if __name__ == '__main__':
