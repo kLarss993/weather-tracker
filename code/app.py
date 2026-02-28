@@ -22,18 +22,9 @@ def home():
             geo_params = {
                 "name": city,
                 "count": 1,
-                "language": "en",
+                "language": "en,ua",
                 "format": "json"
             }
-
-        geo_url = "https://geocoding-api.open-meteo.com/v1/search"
-
-        geo_params = {
-            "name": city,
-            "count": 1,
-            "languages": "en,ua",
-            "format": "json"
-        }
 
         geo_data = requests.get(geo_url, params=geo_params).json()
 
@@ -52,13 +43,14 @@ def home():
 
         temp = weath_data['current_weather']['temperature']
         wndspd = weath_data['current_weather']['windspeed']
+        city = geo_data['results']['name']
 
 
     return render_template('home.html',
                            temp=temp,
                            wndspd=wndspd,
-                           error=error)
+                           error=error,
+                           city=city)
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+app.run(debug=True)

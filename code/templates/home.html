@@ -6,6 +6,10 @@
     </head>
     <body>
         <h1>Hi there!</h1>
+
+        <br>
+
+        <h3>City: {{ city }}</h3>
         <h3>Temperature: {{ temp }} °C (rn)</h3>
         <h3>Wind speed: {{ wndspd }} mps (rn)</h3>
 
@@ -13,7 +17,7 @@
 
         <form method="post">
             <input type="search" name="city" placeholder="Enter city name">
-            <button type="submit" name="city_button">Search</button>
+            <button type="submit">Search</button>
         </form>    
     </body>
 </html>
