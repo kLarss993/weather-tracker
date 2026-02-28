@@ -19,13 +19,18 @@
         <br>
 
         <div class="container">
+            <h3>Temperature & Wind</h3>
             <table>
-                <h3>Temperature: 
-                    {% for i in range(10) %}
-                        <tr><td>{{ temp }} °C</td></tr>
-                        <tr><td>{{ wndspd }} mps</td></tr>
-                    {% endfor %}
-                </h3>
+                <tr>
+                    <th>Temperature |</th>
+                    <th>Wind speed</th>
+                </tr>
+                {% for i in range(10) %}
+                <tr>
+                    <td>{{ temp }} °C</td>
+                    <td>{{ wndspd }} mps</td>
+                </tr>
+                {% endfor %}
             </table>
         </div>
     </body>
