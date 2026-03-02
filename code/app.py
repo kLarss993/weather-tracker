@@ -1,3 +1,4 @@
+from time import *
 from flask import *
 from datetime import *
 import requests
@@ -73,22 +74,24 @@ def home():
         temps = data["hourly"]["temperature_2m"]
         winds = data["hourly"]["windspeed_10m"]
 
-        target_date = "2026-03-01"
+        target_date = now.strftime("%Y-%m-%d")
 
         result = []
+        forecast = []
 
         for i, t in enumerate(times):
             if t.startswith(target_date):
-                result.append((t, temps[i], winds[i]))
-
-        # print(result)
-
+                forecast.append((t, temps[i], winds[i]))
+                # result.append((t, temps[i], winds[i]))
 
     return render_template('home.html',
+                           result=result,
+                           sreftime=strftime,
                            now=now,
                            temp=temp,
                            wndspd=wndspd,
                            error=error,
+                           forecast=forecast,
                            city=city)
 
 

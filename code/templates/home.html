@@ -26,37 +26,34 @@
 
         <div class="container container-main">
             <div class="weather-card" role="region" aria-label="Current weather">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div>
-                        <p class="city-title">{{ city if city else 'Your city' }}</p>
-                        <p class="subtle">Current conditions</p>
-                    </div>
-                    <div class="text-end subtle">Updated just now</div>
-                </div>
+                    <div class="d-flex align-items-center justify-content-between hero">
+                        <div class="d-flex align-items-center gap-3">
+                            <div class="weather-icon">☀️</div>
+                            <div>
+                                <p class="city-title">{{ city if city else 'Your city' }}</p>
+                                <p class="subtle">Current conditions</p>
+                            </div>
+                        </div>
 
-                <div class="metrics">
-                    <div class="metric-card">
-                        <div class="metric-value">{{ temp }} °C</div>
-                        <div class="metric-label">Temperature</div>
-                    </div>
-
-                    <div class="metric-card">
-                        <div class="metric-value">{{ wndspd }} m/s</div>
-                        <div class="metric-label">Wind speed</div>
+                        <div class="text-end">
+                            <div class="subtle">Updated <span id="updatedTime">just now</span></div>
+                            <button id="unitToggle" class="unit-toggle" data-unit="C">°C</button>
+                        </div>
                     </div>
 
-                    <div class="metric-card">
-                        <div class="metric-value">--</div>
-                        <div class="metric-label">Humidity</div>
+                    <div class="metrics">
+                        <div class="metric-card">
+                            <div class="metric-value" data-type="temp" data-c="{{ temp }}">{{ temp }} °C</div>
+                            <div class="metric-label">Temperature</div>
+                        </div>
+
+                        <div class="metric-card">
+                            <div class="metric-value" data-type="wind">{{ wndspd }} m/s</div>
+                            <div class="metric-label">Wind speed</div>
+                        </div>
                     </div>
 
-                    <div class="metric-card">
-                        <div class="metric-value">--</div>
-                        <div class="metric-label">Feels like</div>
-                    </div>
-                </div>
-
-                <p class="footer-note">Tip: search another city to see its current weather. Data below shows repeated sample rows for quick layout preview.</p>
+                    <p class="footer-note">Tip: click the unit button to switch between °C and °F.</p>
             </div>
 
             <div class="weather-card">
@@ -67,19 +64,22 @@
                             <tr>
                                 <th>Temperature</th>
                                 <th>Wind speed</th>
+                                <th>Hour</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% for i in range(5) %}
-                            <tr>
-                                <td>{{ temp }} °C</td>
-                                <td>{{ wndspd }} mps</td>
-                            </tr>
+                            {% for now, temp_h, wind_h in forecast %}
+                                <tr>
+                                    <td>{{ temp_h }} °C</td>
+                                    <td>{{ wind_h }} m/s</td>
+                                    <td>{{ now.split('T')[1].split(':')[0] }}:00</td>
+                                </tr>
                             {% endfor %}
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
+        <script src="{{ url_for('static', filename='js/home.js') }}"></script>
     </body>
 </html>

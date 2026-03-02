@@ -59,6 +59,20 @@ body{
   margin:1.5rem auto;
 }
 
+.hero{
+  display:flex;
+  align-items:center;
+  gap:1rem;
+  padding:1rem 0.5rem 0.5rem 0.5rem;
+}
+
+.weather-icon{
+  width:72px;height:72px;border-radius:18px;
+  background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.7));
+  display:flex;align-items:center;justify-content:center;font-size:30px;color:var(--accent);
+  box-shadow:0 8px 30px rgba(108,202,163,0.08);
+}
+
 .city-title{font-size:1.6rem;font-weight:700;margin:0;color:#05323d}
 .subtle{color:var(--muted);font-size:0.95rem}
 
@@ -75,8 +89,16 @@ body{
   text-align:center;
   border: 1px solid rgba(15,23,42,0.03);
 }
-.metric-value{font-size:1.4rem;font-weight:700;color:#05323d}
+.metric-value{font-size:1.6rem;font-weight:700;color:#05323d;transition:transform .35s ease}
 .metric-label{font-size:0.85rem;color:var(--muted)}
+
+.unit-toggle{background:transparent;border:1px solid rgba(15,23,42,0.06);padding:6px 10px;border-radius:999px;font-weight:600}
+
+.forecast-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:0.8rem;margin-top:1rem}
+.forecast-card{background:linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.8));padding:0.7rem;border-radius:12px;text-align:center;border:1px solid rgba(15,23,42,0.03)}
+
+@keyframes pulseTemp{0%{transform:scale(1)}50%{transform:scale(1.04)}100%{transform:scale(1)}}
+.metric-value.pulse{animation:pulseTemp 1.6s ease-in-out infinite}
 
 .footer-note{margin-top:1rem;color:var(--muted);font-size:0.9rem}
 
