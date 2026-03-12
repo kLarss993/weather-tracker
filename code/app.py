@@ -6,12 +6,13 @@ import requests
 app = Flask(__name__)
 
 
-
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
 def home():
     now = datetime.now()
     
+    result = []
+    forecast = []
     temp = None
     wndspd = None
     error = None
